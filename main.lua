@@ -37,7 +37,8 @@ True = "lua script"
 print(True)         -- lua script
 --#endregion
 
--- (variable names in lua should have their first letter capitailized as of the lua's naming conventions )
+-- (variable names (global scope)in lua should have their first letter capitailized as of the lua's naming conventions )
+-- while for local named variables are typed in lowercase (best practices)
 x = 6       -- global defined variable
 local y = 4 -- localized scope variable (even if it's defined in the global scope (not inside a fucntion or a loop))
 
@@ -84,5 +85,3 @@ multi
 line
 comment.
 ]]
-
-
