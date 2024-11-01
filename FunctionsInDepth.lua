@@ -97,8 +97,10 @@ end
 -- passing a param inside a function definition to act as a refrence for an outer function
 function Manage(my_name, age) -- this is a higher order function and the second param is a call-back function
   print("hello " .. my_name)
-  age()
+  age()                       -- this is where we invoke the function using the argument name not the actual function name that was assigned above (GetAge and GetAge2)
 end
 
+-- both functions calls have a reference to the function (not an actual call to pass in the results) but only passing
+-- a reference to the function itself,
 Manage("ahmed", GetAge2)
 Manage("dan", GetAge)
