@@ -75,3 +75,31 @@ arr_tab = { 1, 2, 5, 4, 9, 10, 50, 430, 100 }
 -- to avoid the above error we should use the unpack method to unpack the table's elements into individual args
 print("max value is " .. math.max(table.unpack(arr_tab)))
 print("min value is " .. math.min(table.unpack(arr_tab)))
+
+--- truncate a string
+Mystring = "lua Scripts"
+
+print(string.sub(Mystring, 1, 5))
+
+-- string.match() from documentation
+-- ! loop over the words of the string to print each in a line using a for loop
+Greet = "oh, hello from lua, pc"
+for i in string.gmatch(Greet, "%a+") do
+  print(i)
+end
+
+print(string.match(Greet, "hello"))
+
+-- return the index of an occurrence in a string using the .find method
+print(string.find(Greet, "pc")) --* the word 'pc' lies on the 21 till 22 indices
+print(#Greet)                   -- length of the greet string
+
+--region
+S1 = "a function can return multiple values not only a single result."
+local start_char, end_char = string.find(S1, "result")
+-- print(start_char, end_char)
+local results = [[the string we are searching was found starting at the character: ]] .. start_char ..
+    "and" .. [[, the ending char ended at ]]
+    .. end_char
+print(results)
+--#endregion
