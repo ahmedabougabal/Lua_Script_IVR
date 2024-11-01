@@ -83,6 +83,7 @@ end
 Takes2(24, 34)
 
 -------------
+-- !(pass in a function as an input argument to another function)
 ---  [[this is an example for function passings / first class functions / call back pattern]]
 -- life scenario use case : plugin system with swappable behaviors
 GetAge = function()
@@ -104,3 +105,31 @@ end
 -- a reference to the function itself,
 Manage("ahmed", GetAge2)
 Manage("dan", GetAge)
+
+--------------------------
+print("=====================================")
+-- how do we return functions from funcitons
+
+GetInfo1 = function()
+  print("info 1 is called ")
+end
+
+
+GetInfo2 = function()
+  print("info 2 is called ")
+  return function() -- we are returning an anonymous function here as a return value from a function
+    print("this is a returned function")
+  end
+end
+
+
+function Auth(arg1, arg2)
+  print("welcome, " .. arg1)
+  arg2()
+end
+
+Auth("Ryu", GetInfo2()) -- GetInfo2 is executed here firstly and its value is returned before the function Auth runs
+print("=====================================")
+Auth("Ryu", GetInfo2)   -- GetInfo2 here is passed as a reference, runs after the function 'Auth'
+--and doesnot return the value of the anonymous function,
+--!The anonymous function is never reached because we're not capturing GetInfo2's return value
