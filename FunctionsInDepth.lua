@@ -133,3 +133,41 @@ print("=====================================")
 Auth("Ryu", GetInfo2)   -- GetInfo2 here is passed as a reference, runs after the function 'Auth'
 --and doesnot return the value of the anonymous function,
 --!The anonymous function is never reached because we're not capturing GetInfo2's return value
+
+print("=====================================")
+---
+--- passing in a couple of arguments into a function
+
+function PrintStuff(...)
+  -- we can wrap the args in a table
+  local Args = { ... }
+  print("hello " .. Args[1] .. ", your age is " .. Args[2])
+end
+
+PrintStuff("ahmed", 25) -- function calling
+
+function PrintAllNames1(...)
+  local Args = { ... }
+  Length = #Args
+  for i = 1, Length, 1
+  do
+    print("hello "
+      .. Args[i])
+  end
+end
+
+print("from 1")
+PrintAllNames1("splinter", "donatollo", "leonardo", "michael angleo")
+
+-- another approach
+function PrintAllNames2(...)
+  local Args = { ... }
+  Length = #Args
+  for _, v in pairs(Args) do
+    print("hello " .. v)
+  end
+end
+
+print("from 2")
+PrintAllNames2("splinter", "donatollo", "leonardo", "michael angleo")
+
